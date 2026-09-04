@@ -214,6 +214,43 @@
       color: rgba(255,255,255,0.3);
     }
 
+    .other-field {
+      display: none;
+      margin-top: 10px;
+      margin-bottom: 16px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .other-field.visible {
+      display: block;
+    }
+
+    .other-field input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 2px solid rgba(245, 197, 24, 0.3);
+      border-radius: 12px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .other-field input[type="text"]:focus {
+      border-color: #f5c518;
+    }
+
+    .other-field input[type="text"]::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .nav-buttons {
       display: flex;
       gap: 12px;
@@ -234,6 +271,8 @@
       cursor: pointer;
       transition: background 0.2s;
       font-family: inherit;
+      text-decoration: none;
+      text-align: center;
     }
 
     .btn-back:hover {
@@ -342,12 +381,12 @@
     <div class="quiz-header">
       <div class="quiz-brand">LaserLove · Анкета</div>
       <div class="progress-bar">
-        <div class="progress-fill" id="progressFill" style="width: 10%"></div>
+        <div class="progress-fill" id="progressFill" style="width: 12.5%"></div>
       </div>
-      <div class="progress-text" id="progressText">Вопрос 1 из 10</div>
+      <div class="progress-text" id="progressText">Вопрос 1 из 8</div>
     </div>
 
-    <!-- Вопрос 1 -->
+    <!-- Вопрос 1: Опыт (radio) -->
     <div class="step active" data-step="1" data-type="radio" data-required="true">
       <div class="step-number">Вопрос 1</div>
       <div class="step-question">Практический опыт работы в лазерной эпиляции<span class="required-mark">*</span></div>
@@ -365,7 +404,7 @@
       </div>
     </div>
 
-    <!-- Вопрос 2 -->
+    <!-- Вопрос 2: Типы лазера (checkbox + другой + открытое поле) -->
     <div class="step" data-step="2" data-type="checkbox" data-required="true">
       <div class="step-number">Вопрос 2</div>
       <div class="step-question">На каких типах лазера вы работали?<span class="required-mark">*</span></div>
@@ -374,8 +413,11 @@
         <li><label class="option-label"><input type="checkbox" name="q2" value="Александритовый лазер"><span class="custom-check"></span>Александритовый лазер</label></li>
         <li><label class="option-label"><input type="checkbox" name="q2" value="Nd:YAG (неодимовый)"><span class="custom-check"></span>Nd:YAG (неодимовый)</label></li>
         <li><label class="option-label"><input type="checkbox" name="q2" value="IPL (фотоэпиляция)"><span class="custom-check"></span>IPL (фотоэпиляция)</label></li>
-        <li><label class="option-label"><input type="checkbox" name="q2" value="Другой"><span class="custom-check"></span>Другой (указать ниже)</label></li>
+        <li><label class="option-label" data-other="q2_other"><input type="checkbox" name="q2" value="Другой"><span class="custom-check"></span>Другой (указать)</label></li>
       </ul>
+      <div class="other-field" id="q2_other">
+        <input type="text" name="q2_other_text" placeholder="Укажите тип лазера...">
+      </div>
       <div class="open-field">
         <div class="open-field-label">Если работали на конкретной модели аппарата — напишите название (например: Vectus, Soprano Ice, Motus AX)</div>
         <input type="text" name="q2_extra" placeholder="Название аппарата...">
@@ -387,7 +429,7 @@
       </div>
     </div>
 
-    <!-- Вопрос 3 -->
+    <!-- Вопрос 3: Польский язык (radio) -->
     <div class="step" data-step="3" data-type="radio" data-required="true">
       <div class="step-number">Вопрос 3</div>
       <div class="step-question">Уровень польского языка<span class="required-mark">*</span></div>
@@ -405,7 +447,7 @@
       </div>
     </div>
 
-    <!-- Вопрос 4 -->
+    <!-- Вопрос 4: Образование (checkbox + другое + открытое поле) -->
     <div class="step" data-step="4" data-type="checkbox" data-required="true">
       <div class="step-number">Вопрос 4</div>
       <div class="step-question">Ваше образование<span class="required-mark">*</span></div>
@@ -415,8 +457,11 @@
         <li><label class="option-label"><input type="checkbox" name="q4" value="Szkoła policealna"><span class="custom-check"></span>Szkoła policealna — косметолог/эстетик</label></li>
         <li><label class="option-label"><input type="checkbox" name="q4" value="Курсы по лазерной эпиляции"><span class="custom-check"></span>Курсы по лазерной эпиляции (сертификаты)</label></li>
         <li><label class="option-label"><input type="checkbox" name="q4" value="Самообразование + опыт"><span class="custom-check"></span>Самообразование + опыт</label></li>
-        <li><label class="option-label"><input type="checkbox" name="q4" value="Другое"><span class="custom-check"></span>Другое</label></li>
+        <li><label class="option-label" data-other="q4_other"><input type="checkbox" name="q4" value="Другое"><span class="custom-check"></span>Другое</label></li>
       </ul>
+      <div class="other-field" id="q4_other">
+        <input type="text" name="q4_other_text" placeholder="Укажите ваше образование...">
+      </div>
       <div class="open-field">
         <div class="open-field-label">Если хотите указать конкретное учебное заведение или сертификат — напишите здесь</div>
         <input type="text" name="q4_extra" placeholder="Учебное заведение / сертификат...">
@@ -428,7 +473,7 @@
       </div>
     </div>
 
-    <!-- Вопрос 5 -->
+    <!-- Вопрос 5: Статус в Польше (radio + другое) -->
     <div class="step" data-step="5" data-type="radio" data-required="true">
       <div class="step-number">Вопрос 5</div>
       <div class="step-question">Ваш текущий статус в Польше<span class="required-mark">*</span></div>
@@ -437,8 +482,11 @@
         <li><label class="option-label"><input type="radio" name="q5" value="Студентка / ученица"><span class="custom-radio"></span>Студентка / ученица в Польше (до 26 лет)</label></li>
         <li><label class="option-label"><input type="radio" name="q5" value="ИП (JDG)"><span class="custom-radio"></span>ИП (JDG — jednoosobowa działalność gospodarcza)</label></li>
         <li><label class="option-label"><input type="radio" name="q5" value="Karta pobytu / гражданство"><span class="custom-radio"></span>Karta pobytu / гражданство</label></li>
-        <li><label class="option-label"><input type="radio" name="q5" value="Другое"><span class="custom-radio"></span>Другое (указать)</label></li>
+        <li><label class="option-label" data-other="q5_other"><input type="radio" name="q5" value="Другое"><span class="custom-radio"></span>Другое (указать)</label></li>
       </ul>
+      <div class="other-field" id="q5_other">
+        <input type="text" name="q5_other_text" placeholder="Укажите ваш статус...">
+      </div>
       <div class="validation-msg" id="val5">Выберите один вариант</div>
       <div class="nav-buttons">
         <button class="btn-back" onclick="prevStep()">← Назад</button>
@@ -446,88 +494,52 @@
       </div>
     </div>
 
-    <!-- Вопрос 6 -->
-    <div class="step" data-step="6" data-type="radio" data-required="true">
+    <!-- Вопрос 6: Формат занятости (checkbox) -->
+    <div class="step" data-step="6" data-type="checkbox" data-required="true">
       <div class="step-number">Вопрос 6</div>
-      <div class="step-question">Опыт ведения клиента по курсу<span class="required-mark">*</span></div>
-      <ul class="options-list">
-        <li><label class="option-label"><input type="radio" name="q6" value="Да, регулярно веду клиентов по курсу"><span class="custom-radio"></span>Да, регулярно веду клиентов по курсу от первого визита до финального</label></li>
-        <li><label class="option-label"><input type="radio" name="q6" value="Иногда, зависит от клиента"><span class="custom-radio"></span>Иногда, зависит от клиента</label></li>
-        <li><label class="option-label"><input type="radio" name="q6" value="Только начинаю развивать"><span class="custom-radio"></span>Только начинаю развивать эту компетенцию</label></li>
-        <li><label class="option-label"><input type="radio" name="q6" value="Нет такого опыта"><span class="custom-radio"></span>Нет такого опыта</label></li>
-      </ul>
-      <div class="open-field">
-        <div class="open-field-label">Опишите коротко: как вы обычно объясняете клиенту, почему нужен курс, а не 1 процедура? <span class="required-mark">*</span></div>
-        <textarea name="q6_extra" placeholder="Ваш ответ..."></textarea>
-      </div>
-      <div class="validation-msg" id="val6">Ответьте на вопрос</div>
-      <div class="nav-buttons">
-        <button class="btn-back" onclick="prevStep()">← Назад</button>
-        <button class="btn-next" onclick="nextStep()">Далее →</button>
-      </div>
-    </div>
-
-    <!-- Вопрос 7 -->
-    <div class="step" data-step="7" data-type="textarea" data-required="true">
-      <div class="step-number">Вопрос 7</div>
-      <div class="step-question">Как вы работаете с возражениями?<span class="required-mark">*</span></div>
-      <div class="open-field">
-        <div class="open-field-label">Клиентка говорит: «Приду один раз перед отпуском» или «Не вижу результата после 2 процедур». Как вы её удержите на курсе? Напишите коротко, как ответите в реальном диалоге.</div>
-        <textarea name="q7" placeholder="Ваш ответ..."></textarea>
-      </div>
-      <div class="validation-msg" id="val7">Напишите ваш ответ</div>
-      <div class="nav-buttons">
-        <button class="btn-back" onclick="prevStep()">← Назад</button>
-        <button class="btn-next" onclick="nextStep()">Далее →</button>
-      </div>
-    </div>
-
-    <!-- Вопрос 8 -->
-    <div class="step" data-step="8" data-type="checkbox" data-required="true">
-      <div class="step-number">Вопрос 8</div>
       <div class="step-question">Ваш формат занятости<span class="required-mark">*</span></div>
       <ul class="options-list">
-        <li><label class="option-label"><input type="checkbox" name="q8" value="Полная занятость (5-6 дней)"><span class="custom-check"></span>Полная занятость (5-6 дней в неделю)</label></li>
-        <li><label class="option-label"><input type="checkbox" name="q8" value="Частичная занятость (2-4 дня)"><span class="custom-check"></span>Частичная занятость (2-4 дня)</label></li>
-        <li><label class="option-label"><input type="checkbox" name="q8" value="Гибкий график под запись"><span class="custom-check"></span>Гибкий график под запись</label></li>
-        <li><label class="option-label"><input type="checkbox" name="q8" value="Готова работать в выходные"><span class="custom-check"></span>Готова работать в выходные</label></li>
-        <li><label class="option-label"><input type="checkbox" name="q8" value="Готова работать вечерами"><span class="custom-check"></span>Готова работать вечерами (после 18:00)</label></li>
+        <li><label class="option-label"><input type="checkbox" name="q6" value="Полная занятость (5-6 дней)"><span class="custom-check"></span>Полная занятость (5-6 дней в неделю)</label></li>
+        <li><label class="option-label"><input type="checkbox" name="q6" value="Частичная занятость (2-4 дня)"><span class="custom-check"></span>Частичная занятость (2-4 дня)</label></li>
+        <li><label class="option-label"><input type="checkbox" name="q6" value="Гибкий график под запись"><span class="custom-check"></span>Гибкий график под запись</label></li>
+        <li><label class="option-label"><input type="checkbox" name="q6" value="Готова работать в выходные"><span class="custom-check"></span>Готова работать в выходные</label></li>
+        <li><label class="option-label"><input type="checkbox" name="q6" value="Готова работать вечерами"><span class="custom-check"></span>Готова работать вечерами (после 18:00)</label></li>
       </ul>
-      <div class="validation-msg" id="val8">Выберите хотя бы один вариант</div>
+      <div class="validation-msg" id="val6">Выберите хотя бы один вариант</div>
       <div class="nav-buttons">
         <button class="btn-back" onclick="prevStep()">← Назад</button>
         <button class="btn-next" onclick="nextStep()">Далее →</button>
       </div>
     </div>
 
-    <!-- Вопрос 9 -->
-    <div class="step" data-step="9" data-type="radio" data-required="true">
-      <div class="step-number">Вопрос 9</div>
+    <!-- Вопрос 7: Готовность к стажировке (radio + открытое поле) -->
+    <div class="step" data-step="7" data-type="radio" data-required="true">
+      <div class="step-number">Вопрос 7</div>
       <div class="step-question">Когда готовы выйти на стажировку?<span class="required-mark">*</span></div>
       <ul class="options-list">
-        <li><label class="option-label"><input type="radio" name="q9" value="Сразу / в течение недели"><span class="custom-radio"></span>Сразу / в течение недели</label></li>
-        <li><label class="option-label"><input type="radio" name="q9" value="Через 1-2 недели"><span class="custom-radio"></span>Через 1-2 недели</label></li>
-        <li><label class="option-label"><input type="radio" name="q9" value="Через месяц"><span class="custom-radio"></span>Через месяц</label></li>
-        <li><label class="option-label"><input type="radio" name="q9" value="Обсуждается индивидуально"><span class="custom-radio"></span>Обсуждается индивидуально</label></li>
+        <li><label class="option-label"><input type="radio" name="q7" value="Сразу / в течение недели"><span class="custom-radio"></span>Сразу / в течение недели</label></li>
+        <li><label class="option-label"><input type="radio" name="q7" value="Через 1-2 недели"><span class="custom-radio"></span>Через 1-2 недели</label></li>
+        <li><label class="option-label"><input type="radio" name="q7" value="Через месяц"><span class="custom-radio"></span>Через месяц</label></li>
+        <li><label class="option-label"><input type="radio" name="q7" value="Обсуждается индивидуально"><span class="custom-radio"></span>Обсуждается индивидуально</label></li>
       </ul>
       <div class="open-field">
         <div class="open-field-label">Если у вас есть конкретная дата или пожелание — напишите здесь</div>
-        <input type="text" name="q9_extra" placeholder="Дата / пожелание...">
+        <input type="text" name="q7_extra" placeholder="Дата / пожелание...">
       </div>
-      <div class="validation-msg" id="val9">Выберите один вариант</div>
+      <div class="validation-msg" id="val7">Выберите один вариант</div>
       <div class="nav-buttons">
         <button class="btn-back" onclick="prevStep()">← Назад</button>
         <button class="btn-next" onclick="nextStep()">Далее →</button>
       </div>
     </div>
 
-    <!-- Вопрос 10 -->
-    <div class="step" data-step="10" data-type="textarea" data-required="false">
-      <div class="step-number">Вопрос 10 <span class="optional-badge">по желанию</span></div>
+    <!-- Вопрос 8: О себе (необязательно) -->
+    <div class="step" data-step="8" data-type="textarea" data-required="false">
+      <div class="step-number">Вопрос 8 <span class="optional-badge">по желанию</span></div>
       <div class="step-question">Расскажите о себе</div>
       <div class="open-field">
         <div class="open-field-label">Есть что добавить о себе, что не попало в анкету? Мы читаем 💛</div>
-        <textarea name="q10" placeholder="Расскажите о себе..."></textarea>
+        <textarea name="q8" placeholder="Расскажите о себе..."></textarea>
       </div>
       <div class="nav-buttons">
         <button class="btn-back" onclick="prevStep()">← Назад</button>
@@ -543,7 +555,7 @@
 
   <script>
     var currentStep = 1;
-    var totalSteps = 10;
+    var totalSteps = 8;
 
     document.addEventListener('click', function(e) {
       var label = e.target.closest('.option-label');
@@ -552,6 +564,8 @@
       var input = label.querySelector('input');
       if (!input) return;
 
+      var step = label.closest('.step');
+
       if (input.type === 'radio') {
         var allLabels = label.closest('.options-list').querySelectorAll('.option-label');
         for (var i = 0; i < allLabels.length; i++) {
@@ -559,9 +573,28 @@
         }
         label.classList.add('selected');
         input.checked = true;
+
+        var otherFields = step.querySelectorAll('.other-field');
+        for (var i = 0; i < otherFields.length; i++) {
+          otherFields[i].classList.remove('visible');
+        }
       } else {
         input.checked = !input.checked;
         label.classList.toggle('selected', input.checked);
+      }
+
+      var otherId = label.getAttribute('data-other');
+      if (otherId) {
+        var otherField = document.getElementById(otherId);
+        if (otherField) {
+          if (input.checked) {
+            otherField.classList.add('visible');
+            var otherInput = otherField.querySelector('input');
+            if (otherInput) otherInput.focus();
+          } else {
+            otherField.classList.remove('visible');
+          }
+        }
       }
     });
 
@@ -592,33 +625,32 @@
 
       if (type === 'radio') {
         var checked = step.querySelector('input[type="radio"]:checked');
-        if (currentStep === 6) {
-          var textarea = step.querySelector('textarea');
-          if (!checked || !textarea.value.trim()) {
-            if (valMsg) { valMsg.classList.add('show'); }
-            return false;
-          }
-        } else {
-          if (!checked) {
-            if (valMsg) { valMsg.classList.add('show'); }
+        if (!checked) {
+          if (valMsg) valMsg.classList.add('show');
+          return false;
+        }
+        if (checked.value === 'Другое') {
+          var otherField = step.querySelector('.other-field input');
+          if (otherField && !otherField.value.trim()) {
+            if (valMsg) { valMsg.textContent = 'Укажите ваш вариант'; valMsg.classList.add('show'); }
             return false;
           }
         }
       } else if (type === 'checkbox') {
         var any = step.querySelector('input[type="checkbox"]:checked');
         if (!any) {
-          if (valMsg) { valMsg.classList.add('show'); }
+          if (valMsg) valMsg.classList.add('show');
           return false;
         }
       } else if (type === 'textarea') {
         var ta = step.querySelector('textarea');
         if (!ta.value.trim()) {
-          if (valMsg) { valMsg.classList.add('show'); }
+          if (valMsg) valMsg.classList.add('show');
           return false;
         }
       }
 
-      if (valMsg) { valMsg.classList.remove('show'); }
+      if (valMsg) valMsg.classList.remove('show');
       return true;
     }
 
@@ -635,58 +667,66 @@
       }
     }
 
+    function getOtherText(name) {
+      var el = document.querySelector('input[name="' + name + '"]');
+      return el ? el.value.trim() : '';
+    }
+
     function collectAnswers() {
       var answers = {};
 
-      // Q1 - radio
       var q1 = document.querySelector('input[name="q1"]:checked');
       answers['1. Опыт в лазерной эпиляции'] = q1 ? q1.value : '—';
 
-      // Q2 - checkbox + extra
       var q2 = document.querySelectorAll('input[name="q2"]:checked');
       var q2vals = [];
-      for (var i = 0; i < q2.length; i++) q2vals.push(q2[i].value);
+      for (var i = 0; i < q2.length; i++) {
+        if (q2[i].value === 'Другой') {
+          var ot = getOtherText('q2_other_text');
+          q2vals.push('Другой: ' + (ot || '—'));
+        } else {
+          q2vals.push(q2[i].value);
+        }
+      }
       var q2extra = document.querySelector('input[name="q2_extra"]').value.trim();
       answers['2. Типы лазера'] = q2vals.join(', ') + (q2extra ? '\nАппарат: ' + q2extra : '');
 
-      // Q3 - radio
       var q3 = document.querySelector('input[name="q3"]:checked');
       answers['3. Польский язык'] = q3 ? q3.value : '—';
 
-      // Q4 - checkbox + extra
       var q4 = document.querySelectorAll('input[name="q4"]:checked');
       var q4vals = [];
-      for (var i = 0; i < q4.length; i++) q4vals.push(q4[i].value);
+      for (var i = 0; i < q4.length; i++) {
+        if (q4[i].value === 'Другое') {
+          var ot = getOtherText('q4_other_text');
+          q4vals.push('Другое: ' + (ot || '—'));
+        } else {
+          q4vals.push(q4[i].value);
+        }
+      }
       var q4extra = document.querySelector('input[name="q4_extra"]').value.trim();
       answers['4. Образование'] = q4vals.join(', ') + (q4extra ? '\nДетали: ' + q4extra : '');
 
-      // Q5 - radio
       var q5 = document.querySelector('input[name="q5"]:checked');
-      answers['5. Статус в Польше'] = q5 ? q5.value : '—';
+      var q5val = q5 ? q5.value : '—';
+      if (q5 && q5.value === 'Другое') {
+        var ot = getOtherText('q5_other_text');
+        q5val = 'Другое: ' + (ot || '—');
+      }
+      answers['5. Статус в Польше'] = q5val;
 
-      // Q6 - radio + textarea
-      var q6 = document.querySelector('input[name="q6"]:checked');
-      var q6extra = document.querySelector('textarea[name="q6_extra"]').value.trim();
-      answers['6. Ведение клиента по курсу'] = (q6 ? q6.value : '—') + '\nОтвет: ' + (q6extra || '—');
+      var q6 = document.querySelectorAll('input[name="q6"]:checked');
+      var q6vals = [];
+      for (var i = 0; i < q6.length; i++) q6vals.push(q6[i].value);
+      answers['6. Формат занятости'] = q6vals.join(', ') || '—';
 
-      // Q7 - textarea
-      answers['7. Работа с возражениями'] = document.querySelector('textarea[name="q7"]').value.trim() || '—';
+      var q7 = document.querySelector('input[name="q7"]:checked');
+      var q7extra = document.querySelector('input[name="q7_extra"]').value.trim();
+      answers['7. Готовность к стажировке'] = (q7 ? q7.value : '—') + (q7extra ? '\nДетали: ' + q7extra : '');
 
-      // Q8 - checkbox
-      var q8 = document.querySelectorAll('input[name="q8"]:checked');
-      var q8vals = [];
-      for (var i = 0; i < q8.length; i++) q8vals.push(q8[i].value);
-      answers['8. Формат занятости'] = q8vals.join(', ') || '—';
-
-      // Q9 - radio + extra
-      var q9 = document.querySelector('input[name="q9"]:checked');
-      var q9extra = document.querySelector('input[name="q9_extra"]').value.trim();
-      answers['9. Готовность к стажировке'] = (q9 ? q9.value : '—') + (q9extra ? '\nДетали: ' + q9extra : '');
-
-      // Q10 - textarea (optional)
-      var q10 = document.querySelector('textarea[name="q10"]').value.trim();
-      if (q10) {
-        answers['10. О себе'] = q10;
+      var q8 = document.querySelector('textarea[name="q8"]').value.trim();
+      if (q8) {
+        answers['8. О себе'] = q8;
       }
 
       return answers;
@@ -707,7 +747,6 @@
     }
 
     function submitQuiz() {
-      // Last step is optional, no validation needed
       var answers = collectAnswers();
       var message = formatTelegramMessage(answers);
 
@@ -719,7 +758,6 @@
       // ============================
 
       if (BOT_TOKEN === 'YOUR_BOT_TOKEN') {
-        // Telegram not configured yet — redirect directly
         window.location.href = 'thanks.html';
         return;
       }
