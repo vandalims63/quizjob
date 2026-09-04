@@ -251,6 +251,108 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .final-hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .final-emoji {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .final-title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .final-steps {
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .final-step-title {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .final-step-item {
+      font-size: 15px;
+      line-height: 1.5;
+      padding: 6px 0;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .final-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 24px 0;
+    }
+
+    .final-contact-title {
+      font-size: 18px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    .contact-field {
+      margin-bottom: 20px;
+    }
+
+    .contact-label {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 8px;
+    }
+
+    .contact-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-input:focus {
+      border-color: #f5c518;
+    }
+
+    .contact-input::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .messenger-options {
+      display: flex;
+      gap: 12px;
+    }
+
+    .messenger-label {
+      flex: 1;
+      justify-content: center;
+    }
+
+    .privacy-note {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
     .nav-buttons {
       display: flex;
       gap: 12px;
@@ -381,7 +483,7 @@
     <div class="quiz-header">
       <div class="quiz-brand">LaserLove · Анкета</div>
       <div class="progress-bar">
-        <div class="progress-fill" id="progressFill" style="width: 12.5%"></div>
+        <div class="progress-fill" id="progressFill" style="width: 11%"></div>
       </div>
       <div class="progress-text" id="progressText">Вопрос 1 из 8</div>
     </div>
@@ -543,8 +645,55 @@
       </div>
       <div class="nav-buttons">
         <button class="btn-back" onclick="prevStep()">← Назад</button>
-        <button class="btn-next btn-submit" onclick="submitQuiz()">Отправить анкету ✓</button>
+        <button class="btn-next" onclick="nextStep()">Далее →</button>
       </div>
+    </div>
+
+    <!-- Финальный экран: контакты -->
+    <div class="step" data-step="9" data-type="contact" data-required="true">
+      <div class="final-hero">
+        <div class="final-emoji">🎉</div>
+        <div class="final-title">Ты практически в команде!</div>
+      </div>
+
+      <div class="final-steps">
+        <div class="final-step-title">Что будет дальше:</div>
+        <div class="final-step-item"><span class="final-step-num">1️⃣</span> Мы прочитаем твою анкету</div>
+        <div class="final-step-item"><span class="final-step-num">2️⃣</span> Свяжемся с тобой в течение 48 часов</div>
+        <div class="final-step-item"><span class="final-step-num">3️⃣</span> Пригласим на короткое интервью (30 минут, онлайн или в салоне)</div>
+        <div class="final-step-item"><span class="final-step-num">4️⃣</span> Знакомим с командой и работой</div>
+      </div>
+
+      <div class="final-divider"></div>
+
+      <div class="final-contact-title">Оставь контакты — и мы напишем первыми 💛</div>
+
+      <div class="contact-field">
+        <label class="contact-label">Имя<span class="required-mark">*</span></label>
+        <input type="text" name="contact_name" placeholder="Ваше имя" class="contact-input">
+      </div>
+
+      <div class="contact-field">
+        <label class="contact-label">Телефон (WhatsApp / Telegram)<span class="required-mark">*</span></label>
+        <input type="text" name="contact_phone" placeholder="Номер или @username" class="contact-input">
+      </div>
+
+      <div class="contact-field">
+        <label class="contact-label">Удобный мессенджер<span class="required-mark">*</span></label>
+        <div class="messenger-options">
+          <label class="option-label messenger-label"><input type="radio" name="contact_messenger" value="WhatsApp"><span class="custom-radio"></span>WhatsApp</label>
+          <label class="option-label messenger-label"><input type="radio" name="contact_messenger" value="Telegram"><span class="custom-radio"></span>Telegram</label>
+        </div>
+      </div>
+
+      <div class="validation-msg" id="val9">Заполните все поля</div>
+
+      <div class="nav-buttons">
+        <button class="btn-back" onclick="prevStep()">← Назад</button>
+        <button class="btn-next btn-submit" onclick="submitQuiz()">💛 ОТПРАВИТЬ И ЖДАТЬ ОТВЕТА</button>
+      </div>
+
+      <div class="privacy-note">🔒 Твои данные не увидит никто, кроме нашей HR-команды.</div>
     </div>
   </div>
 
@@ -555,7 +704,7 @@
 
   <script>
     var currentStep = 1;
-    var totalSteps = 8;
+    var totalSteps = 9;
 
     document.addEventListener('click', function(e) {
       var label = e.target.closest('.option-label');
@@ -601,7 +750,11 @@
     function updateProgress() {
       var pct = Math.round((currentStep / totalSteps) * 100);
       document.getElementById('progressFill').style.width = pct + '%';
-      document.getElementById('progressText').textContent = 'Вопрос ' + currentStep + ' из ' + totalSteps;
+      if (currentStep <= 8) {
+        document.getElementById('progressText').textContent = 'Вопрос ' + currentStep + ' из 8';
+      } else {
+        document.getElementById('progressText').textContent = 'Последний шаг!';
+      }
     }
 
     function showStep(n) {
@@ -645,6 +798,14 @@
       } else if (type === 'textarea') {
         var ta = step.querySelector('textarea');
         if (!ta.value.trim()) {
+          if (valMsg) valMsg.classList.add('show');
+          return false;
+        }
+      } else if (type === 'contact') {
+        var name = document.querySelector('input[name="contact_name"]').value.trim();
+        var phone = document.querySelector('input[name="contact_phone"]').value.trim();
+        var messenger = document.querySelector('input[name="contact_messenger"]:checked');
+        if (!name || !phone || !messenger) {
           if (valMsg) valMsg.classList.add('show');
           return false;
         }
@@ -729,6 +890,12 @@
         answers['8. О себе'] = q8;
       }
 
+      var contactName = document.querySelector('input[name="contact_name"]').value.trim();
+      var contactPhone = document.querySelector('input[name="contact_phone"]').value.trim();
+      var contactMessenger = document.querySelector('input[name="contact_messenger"]:checked');
+      answers['👤 Имя'] = contactName || '—';
+      answers['📱 Контакт'] = (contactPhone || '—') + ' (' + (contactMessenger ? contactMessenger.value : '—') + ')';
+
       return answers;
     }
 
@@ -747,6 +914,7 @@
     }
 
     function submitQuiz() {
+      if (!validateStep()) return;
       var answers = collectAnswers();
       var message = formatTelegramMessage(answers);
 
