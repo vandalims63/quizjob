@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Спасибо — LaserLove</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 440px;
+      width: 100%;
+    }
+
+    .check-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(39, 174, 96, 0.15);
+      border: 3px solid #27ae60;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin: 0 auto 28px;
+      animation: popIn 0.5s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .message {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 36px;
+    }
+
+    .brand {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="check-icon">✓</div>
+    <h1>Спасибо, вы успешно заполнили анкету! 💛</h1>
+    <p class="message">
+      Мы получили вашу заявку на вакансию мастера лазерной эпиляции в Кракове.<br><br>
+      Мы свяжемся с вами в ближайшее время.
+    </p>
+    <div class="brand">LaserLove · Краков</div>
+  </div>
+</body>
+</html>
