@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -70,8 +70,9 @@
     .quiz-wrapper {
       max-width: 480px;
       margin: 0 auto;
-      padding: 40px 24px 48px;
+      padding: calc(40px + env(safe-area-inset-top)) 24px calc(48px + env(safe-area-inset-bottom));
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       position: relative;
