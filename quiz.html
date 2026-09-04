@@ -21,7 +21,7 @@
     .quiz-wrapper {
       max-width: 480px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 40px 24px 48px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -29,9 +29,9 @@
 
     .quiz-header {
       text-align: center;
-      padding-bottom: 20px;
+      padding-bottom: 24px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .quiz-brand {
@@ -384,6 +384,13 @@
       background: rgba(255,255,255,0.12);
     }
 
+    .btn-back-small {
+      flex: 0 0 auto;
+      padding: 16px 18px;
+      font-size: 15px;
+      opacity: 0.6;
+    }
+
     .btn-next {
       flex: 1;
       padding: 16px 24px;
@@ -692,7 +699,7 @@
       <div class="validation-msg" id="val9">Заполните все поля</div>
 
       <div class="nav-buttons">
-        <button class="btn-back" onclick="prevStep()">← Назад</button>
+        <button class="btn-back btn-back-small" onclick="prevStep()">←</button>
         <button class="btn-next btn-submit" onclick="submitQuiz()">💛 ОТПРАВИТЬ И ЖДАТЬ ОТВЕТА</button>
       </div>
 
@@ -719,9 +726,10 @@
       var step = label.closest('.step');
 
       if (input.type === 'radio') {
-        var allLabels = label.closest('.options-list').querySelectorAll('.option-label');
-        for (var i = 0; i < allLabels.length; i++) {
-          allLabels[i].classList.remove('selected');
+        var groupInputs = document.querySelectorAll('input[name="' + input.name + '"]');
+        for (var i = 0; i < groupInputs.length; i++) {
+          var gl = groupInputs[i].closest('.option-label');
+          if (gl) gl.classList.remove('selected');
         }
         label.classList.add('selected');
         input.checked = true;
